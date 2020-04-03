@@ -36,11 +36,18 @@ const createSendToken = (user, statusCode, req, res) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
+  if (req.body.role === 'admin') {
+    return next(
+      new AppError('You do not have permission to perform this action', 403)
+    );
+  }
+
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm
+    passwordConfirm: req.body.passwordConfirm,
+    role: req.body.role
   });
 
   const url = `${req.protocol}://${req.get('host')}/me`;
