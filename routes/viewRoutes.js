@@ -10,7 +10,7 @@ router.get('/signup', authController.isLoggedIn, viewsController.getSignupForm);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get(
   '/my-settings',
-  authController.isLoggedIn,
+  authController.protect,
   viewsController.getAccountSettings
 );
 
