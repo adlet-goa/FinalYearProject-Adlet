@@ -2,5 +2,24 @@ extends base
 
 block content
     section.container
-        h1.large.text-primary Advertiser Page
-        
+            section.container
+                h1.large.text-primary Dashboard
+                p.lead Welcome #{user.name.split(' ')[0]}
+                .dash-buttons
+                    a.btn.btn-light(href='#') Upload ads
+                    h2.my-2 Ads running !
+                    table.table
+                        thead
+                            tr
+                                th Title
+                                th.hide-sm Category
+                                th.hide-sm Created on
+                                th Delete
+                        each ad in ads
+                            tbody.table
+                                tr
+                                    td= ad.title
+                                    td.hide-sm= ad.category
+                                    td.hide-sm= ad.createdat
+                                    td
+                                        button.btn.btn-danger Delete
