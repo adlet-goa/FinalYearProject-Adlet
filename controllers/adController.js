@@ -17,7 +17,7 @@ const serviceKey = path.join(
 
 const gc = new Storage({
   keyFilename: serviceKey,
-  projectId: 'adlet-e4ffd'
+  projectId: 'adlet-e4ffd',
 });
 const bucket = gc.bucket('adlet-e4ffd.appspot.com');
 
@@ -32,13 +32,13 @@ const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
     // no larger than 5mb.
-    fileSize: 5 * 1024 * 1024
-  }
+    fileSize: 5 * 1024 * 1024,
+  },
 });
 
 exports.uploadContent = upload.single('content');
 
-const uploadFile = file =>
+const uploadFile = (file) =>
   new Promise((resolve, reject) => {
     const { originalname, buffer } = file;
 
@@ -46,8 +46,8 @@ const uploadFile = file =>
     const blobStream = blob.createWriteStream({
       resumable: false,
       metadata: {
-        contentType: file.mimetype
-      }
+        contentType: file.mimetype,
+      },
     });
 
     blobStream
@@ -72,6 +72,7 @@ exports.uploadToStorage = catchAsync(async (req, res, next) => {
   req.file.originalname = `ad-${req.params.id}-${Date.now()}.${ext}`;
 
   req.body.content = await uploadFile(req.file);
+  req.body.mimeType = req.file.mimetype.split('/')[0];
 
   next();
 });

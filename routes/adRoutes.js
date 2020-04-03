@@ -10,6 +10,7 @@ router
   .route('/')
   .get(adController.getAllAds)
   .post(
+    authController.protect,
     authController.restrictTo('advertiser', 'admin'),
     adController.setKioskUserIds,
     adController.createAd
@@ -19,12 +20,14 @@ router
   .route('/:id')
   .get(adController.getAd)
   .patch(
+    authController.protect,
     authController.restrictTo('advertiser', 'admin'),
     adController.uploadContent,
     adController.uploadToStorage,
     adController.updateAd
   )
   .delete(
+    authController.protect,
     authController.restrictTo('advertiser', 'admin'),
     adController.deleteAd
   );
