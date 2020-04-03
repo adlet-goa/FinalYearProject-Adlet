@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['user', 'guide', 'lead-guide', 'admin'],
-    default: 'user'
+    enum: ['advertiser', 'publisher', 'admin'],
+    default: 'advertiser'
   },
   password: {
     type: String,
@@ -37,9 +37,18 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same!'
     }
   },
-  passwordChangedAt: Date,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
+  passwordChangedAt: {
+    Date,
+    select: false
+  },
+  passwordResetToken: {
+    String,
+    select: false
+  },
+  passwordResetExpires: {
+    Date,
+    select: false
+  },
   active: {
     type: Boolean,
     default: true,
