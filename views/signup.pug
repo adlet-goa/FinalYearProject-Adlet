@@ -16,7 +16,9 @@ block content
                     | This site uses Gravatar so if you want a profile image, use a
                     | Gravatar email
                 .form-group
-                input#role(type='text' placeholder='publisher / advertiser' name='role' required='')
+                select#role(type='text' placeholder='Publisher / Advertiser' name='role' required='')
+                    option(value='Publisher') Publisher
+                    option(value='Advertiser') Advertiser
                 .form-group
                 input#password(type='password' placeholder='Password' name='password' minlength='8')
                 .form-group

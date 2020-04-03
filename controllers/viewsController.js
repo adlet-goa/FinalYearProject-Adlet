@@ -33,7 +33,19 @@ exports.getAccount = (req, res) => {
 
 exports.getAccountSettings = catchAsync(async (req, res, next) => {
   res.status(200).render('settings', {
-    title: 'Landing Page'
+    title: 'Settings Page'
+  });
+});
+
+exports.getAccountRP = catchAsync(async (req, res, next) => {
+  res.status(200).render('publisher', {
+    title: 'Publisher Page'
+  });
+});
+
+exports.getAccountRA = catchAsync(async (req, res, next) => {
+  res.status(200).render('advertiser', {
+    title: 'Advertiser Page'
   });
 });
 

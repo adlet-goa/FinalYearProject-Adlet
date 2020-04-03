@@ -13,5 +13,7 @@ router.get(
   authController.protect,
   viewsController.getAccountSettings
 );
+router.get('/publisher', authController.protect, viewsController.getAccountRP);
+router.get('/advertiser', authController.protect, viewsController.getAccountRP);
 
 module.exports = router;
