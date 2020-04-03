@@ -9,7 +9,7 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   // 2) Build template
   // 3) Render that template using tour data from 1)
   res.status(200).render('overview', {
-    title: 'All Kiosk'
+    title: 'Landing Page'
   });
 });
 
@@ -21,7 +21,7 @@ exports.getSignupForm = (req, res) => {
 
 exports.getLoginForm = (req, res) => {
   res.status(200).render('login', {
-    title: 'Log into your account'
+    title: 'Log in'
   });
 };
 
@@ -30,6 +30,12 @@ exports.getAccount = (req, res) => {
     title: 'Your account'
   });
 };
+
+exports.getAccountSettings = catchAsync(async (req, res, next) => {
+  res.status(200).render('settings', {
+    title: 'Landing Page'
+  });
+});
 
 exports.updateUserData = catchAsync(async (req, res, next) => {
   const updatedUser = await User.findByIdAndUpdate(

@@ -11,7 +11,7 @@ nav.navbar.bg-dark
             li
             a(href='/me')
                 span= user.name.split(' ')[0]
-            +navItem('#', 'My bookings')
+            +navItem('/my-settings', 'Settings')
             +navItem('#', 'Billing')
             li
             a.nav__el--logout Log out
