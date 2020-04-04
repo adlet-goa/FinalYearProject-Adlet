@@ -1,0 +1,19 @@
+extends base
+
+block content
+    .landing
+        section.container
+            h1.large.text-primary Log In
+            p.lead
+                i.fas.fa-user
+                |  Log into Your Account
+            form.form.form--login
+                .form-group
+                input#email(type='email', placeholder='Email Address', name='email', required='')
+                .form-group
+                input#password(type='password', placeholder='Password', name='password')
+                .form-group
+                input.btn.btn-primary(type='submit' value='Login')
+                p.my-1
+                    | Don&apos;t have an account? 
+                    a(href='/signup') Sign Up

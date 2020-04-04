@@ -1,0 +1,65 @@
+[
+  {
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "role": "admin",
+    "active": true,
+    "photo": "admin.jpg",
+    "password": "12345678",
+    "passwordConfirm": "12345678"
+  },
+  {
+    "name": "Siddharth Prakashan",
+    "email": "siddharth@gmail.com",
+    "role": "publisher",
+    "active": true,
+    "photo": "sid.jpg",
+    "password": "12345678",
+    "passwordConfirm": "12345678"
+  },
+  {
+    "name": "Amey Volvoikar",
+    "email": "amey@gmail.com",
+    "role": "publisher",
+    "active": true,
+    "photo": "amey.jpg",
+    "password": "12345678",
+    "passwordConfirm": "12345678"
+  },
+  {
+    "name": "Ls Kanishka",
+    "email": "kanishka@gmail.com",
+    "role": "publisher",
+    "active": true,
+    "photo": "kanishka.jpg",
+    "password": "12345678",
+    "passwordConfirm": "12345678"
+  },
+  {
+    "name": "Gautam Nagvekar",
+    "email": "gautam@gmail.com",
+    "role": "publisher",
+    "active": true,
+    "photo": "gautam.jpg",
+    "password": "12345678",
+    "passwordConfirm": "12345678"
+  },
+  {
+    "name": "Simron Rath",
+    "email": "simron@gmail.com",
+    "role": "publisher",
+    "active": true,
+    "photo": "simron.jpg",
+    "password": "12345678",
+    "passwordConfirm": "12345678"
+  },
+  {
+    "name": "PCCE",
+    "email": "pcce@gmail.com",
+    "role": "publisher",
+    "active": true,
+    "photo": "pcce.jpg",
+    "password": "12345678",
+    "passwordConfirm": "12345678"
+  }
+]

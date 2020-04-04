@@ -1,0 +1,16 @@
+[
+  {
+    "name": "desterro kiosk",
+    "screenSize": 15,
+    "images": ["desterro1.jpg", "desterro2.jpg"],
+    "Location": {
+      "description": "Close to a school and dense residential area",
+      "type": "Point",
+      "coordinates": [-80.185942, 25.774772],
+      "address": "Alto Desterro, Vasco, Goa"
+    },
+    "owner": "5e3ad6705b58372d5cb775bb",
+    "operatingHours": "24h",
+    "operatingDays": "full-week"
+  }
+]

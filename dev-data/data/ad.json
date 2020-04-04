@@ -1,0 +1,16 @@
+[
+  {
+    "title": "laxman photograpy",
+    "content": "laxman-photography1.jpg",
+    "category": "service",
+    "duration": ["2020-02-06T09:00:00.000Z", "2020-03-01T09:00:00.000Z"],
+    "displayHours": "24h",
+    "displayDays": "full-week",
+    "kisoks": [
+      "5e3b0ec26c2cf62a8457a77d",
+      "5e3b0f9c6c2cf62a8457a77e",
+      "5e3d08d8fb38ed1578b24f69"
+    ],
+    "advertiser": "5e3d0d003d87d10704c08fc8"
+  }
+]

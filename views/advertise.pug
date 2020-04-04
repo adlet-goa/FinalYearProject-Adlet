@@ -1,0 +1,24 @@
+extends base
+
+block append head
+    script(src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js')
+    link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet')
+
+
+block content
+        section.container
+            h1.large.text-primary Advertising Portal
+            form.form.form-user-data
+                .form-group
+                input#name(type='file', accept='file_extension|audio/*|video/*|image/*|media_type', required)
+                .form-group
+                p From:
+                input(type='date')
+                p To:
+                input(type='date')
+                .form-group
+                section.container.section-map
+                   each kiosk in kiosks
+                     #map(data-locations=`${JSON.stringify(kiosk.location.coordinates)}`)
+                .form-group
+                button.btn.btn-primary Submit
