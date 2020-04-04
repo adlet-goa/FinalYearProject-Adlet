@@ -19,6 +19,20 @@ router.get('/me', userController.getMe, userController.getUser);
 router.patch('/updateMe', userController.updateMe);
 router.delete('/deleteMe', userController.deleteMe);
 
+router
+  .route('/getMyAds')
+  .get(
+    authController.restrictTo('admin', 'advertiser'),
+    userController.getMyAds
+  );
+
+router
+  .route('/getMyKiosks')
+  .get(
+    authController.restrictTo('admin', 'publisher'),
+    userController.getMyKiosks
+  );
+
 router.use(authController.restrictTo('admin'));
 
 router
@@ -31,5 +45,8 @@ router
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
+
+router.route('/getUserAds/:id').get(userController.getUserAds);
+router.route('/getUserKiosks/:id').get(userController.getUserKiosks);
 
 module.exports = router;
