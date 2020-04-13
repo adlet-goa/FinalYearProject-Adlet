@@ -41,6 +41,8 @@ const adSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    estReach: Number,
+    price: Number,
     kiosks: [
       {
         type: mongoose.Schema.ObjectId,

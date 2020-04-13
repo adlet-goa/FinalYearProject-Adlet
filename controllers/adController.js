@@ -1,9 +1,11 @@
 const { format } = require('util');
+const mongoose = require('mongoose');
 const multer = require('multer');
 const Cloud = require('@google-cloud/storage');
 const path = require('path');
 
 const Ad = require('./../models/adModel');
+const Kiosk = require('./../models/kioskModel');
 const factory = require('./handlerFactory');
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
@@ -73,6 +75,25 @@ exports.uploadToStorage = catchAsync(async (req, res, next) => {
 
   req.body.content = await uploadFile(req.file);
   req.body.mimeType = req.file.mimetype.split('/')[0];
+
+  next();
+});
+
+exports.setPriceReach = catchAsync(async (req, res, next) => {
+  if (!req.body.kiosks) return next();
+
+  const { ObjectId } = mongoose.Types.ObjectId;
+  const kiosksObjIds = req.body.kiosks.map((el) => new ObjectId(el));
+  const adKiosks = await Kiosk.find({ _id: { $in: kiosksObjIds } });
+
+  let price = 0;
+  let estReach = 0;
+  adKiosks.forEach(function (el) {
+    price += el.subscription;
+    estReach += el.estReach;
+  });
+  req.body.estReach = estReach;
+  req.body.price = price;
 
   next();
 });

@@ -13,6 +13,7 @@ router
     authController.protect,
     authController.restrictTo('advertiser', 'admin'),
     adController.setKioskUserIds,
+    adController.setPriceReach,
     adController.createAd
   );
 
@@ -24,6 +25,7 @@ router
     authController.restrictTo('advertiser', 'admin'),
     adController.uploadContent,
     adController.uploadToStorage,
+    adController.setPriceReach,
     adController.updateAd
   )
   .delete(
