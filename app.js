@@ -7,7 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
-//const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 
@@ -16,8 +16,8 @@ const globalErrorHandler = require('./controllers/errorController');
 const kioskRouter = require('./routes/kioskRoutes');
 const userRouter = require('./routes/userRoutes');
 const adRouter = require('./routes/adRoutes');
-//const subscriptionRouter = require('./routes/subscriptionRoutes');
-//const bookingController = require('./controllers/bookingController');
+const bookingRouter = require('./routes/bookingRoutes');
+const bookingController = require('./controllers/bookingController');
 const viewRouter = require('./routes/viewRoutes');
 
 // Start express app
@@ -60,11 +60,11 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 // Stripe webhook, BEFORE body-parser, because stripe needs the body as stream
-// app.post(
-//   '/webhook-checkout',
-//   bodyParser.raw({ type: 'application/json' }),
-//   bookingController.webhookCheckout
-// );
+app.post(
+  '/webhook-checkout',
+  bodyParser.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout
+);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
@@ -105,7 +105,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/kiosks', kioskRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/ads', adRouter);
-//app.use('/api/v1/subscriptions', subscriptionRouter);
+app.use('/api/v1/bookings', bookingRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
