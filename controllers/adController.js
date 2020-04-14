@@ -80,20 +80,25 @@ exports.uploadToStorage = catchAsync(async (req, res, next) => {
 });
 
 exports.setPriceReach = catchAsync(async (req, res, next) => {
-  if (!req.body.kiosks) return next();
+  if (!req.body.kiosks || !req.body.duration) return next();
 
   const { ObjectId } = mongoose.Types.ObjectId;
   const kiosksObjIds = req.body.kiosks.map((el) => new ObjectId(el));
   const adKiosks = await Kiosk.find({ _id: { $in: kiosksObjIds } });
 
-  let price = 0;
-  let estReach = 0;
+  const days =
+    (new Date(req.body.duration[1]) - new Date(req.body.duration[0])) /
+    (1000 * 3600 * 24);
+
+  let p = 0;
+  let eR = 0;
   adKiosks.forEach(function (el) {
-    price += el.subscription;
-    estReach += el.estReach;
+    p += el.subscription;
+    eR += el.estReach;
   });
-  req.body.estReach = estReach;
-  req.body.price = price;
+
+  req.body.estReach = eR * days;
+  req.body.price = p * days;
 
   next();
 });
