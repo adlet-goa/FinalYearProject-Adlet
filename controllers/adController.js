@@ -80,6 +80,16 @@ exports.uploadToStorage = catchAsync(async (req, res, next) => {
 });
 
 exports.setPriceReach = catchAsync(async (req, res, next) => {
+  if (req.body.kiosks) {
+    if (!req.body.duration)
+      return next(new AppError('please provide duration', 400));
+  }
+
+  if (req.body.duration) {
+    if (!req.body.kiosks)
+      return next(new AppError('please provide kiosks', 400));
+  }
+
   if (!req.body.kiosks || !req.body.duration) return next();
 
   const { ObjectId } = mongoose.Types.ObjectId;
