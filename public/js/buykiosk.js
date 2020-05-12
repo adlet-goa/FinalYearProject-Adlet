@@ -5,9 +5,12 @@ import { showAlert } from './alerts';
 export const buykiosk = async (
   name,
   address,
+  lat,
+  lon,
   description,
   operatingHours,
-  operatingDays
+  operatingDays,
+  screenSize
 ) => {
   try {
     const res = await axios({
@@ -16,9 +19,12 @@ export const buykiosk = async (
       data: {
         name,
         address,
+        lat,
+        lon,
         description,
         operatingHours,
-        operatingDays
+        operatingDays,
+        screenSize
       }
     });
 

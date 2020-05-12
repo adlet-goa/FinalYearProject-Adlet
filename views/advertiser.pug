@@ -5,24 +5,38 @@ block content
         p.lead Welcome #{user.name.split(' ')[0]}
         form.form
                 .form-group.form--buykiosk
+                .form-group
+                p#err.lead
                 input#name(type='text' placeholder='Name' name='name' required='')
                 .form-group
-                input#name(type='text' placeholder='Address' name='address' required='')
+                input#address(type='text' placeholder='Address' name='address' required='')
                 .form-group
-                input#name(type='text' placeholder='Description' name='description' required='')
+                input#lat(type='text' placeholder='Latitude' name='lat' required='')
+                .form-group
+                input#lon(type='text' placeholder='Longitude' name='lon' required='')
+                .form-group
+                input#description(type='text' placeholder='Description' name='description' required='')
                 .form-group
                 small.form-text
                     | Operating Hours
-                select#role(type='text' placeholder='Operating Hours' name='operatingHours' required='')
+                select#operatingHours(type='text' placeholder='Operating Hours' name='operatingHours' required='')
                     option(value='9to5') 9 - 5
                     option(value='9to8') 9 - 8
                     option(value='24h') 24h
                 .form-group
                 small.form-text
                     | Operating Days
-                select#role(type='text' placeholder='Operating Days' name='operatingDays' required='')
+                select#operatingDays(type='text' placeholder='Operating Days' name='operatingDays' required='')
                     option(value='mon-fri') Mon-Fri
                     option(value='mon-sat') Mon-Fri
                     option(value='full-week') Full Week  
+                .form-group
+                small.form-text
+                    | Screen Size
+                select#screenSize(type='number' placeholder='Screen Size' name='screenSize' required='')
+                    option(value='40') 40
+                    option(value='43') 43
+                    option(value='50') 50    
+                    option(value='55') 55   
                 .form-group                
                 input.btn.btn-primary(type='submit' value='Buy Kiosk')

@@ -68,8 +68,19 @@ if (buykioskForm)
     e.preventDefault();
     const name = document.getElementById('name').value;
     const address = document.getElementById('address').value;
+    const lat = document.getElementById('lat').value;
+    const lon = document.getElementById('lon').value;
     const description = document.getElementById('description').value;
     const operatingHours = document.getElementById('operatingHours').value;
     const operatingDays = document.getElementById('operatingDays').value;
-    buykiosk(name, address, description, operatingHours, operatingDays);
+    const screenSize = document.getElementById('screenSize').value;
+    buykiosk(
+      name,
+      address,
+      lat.lon,
+      description,
+      operatingHours,
+      operatingDays,
+      screenSize
+    );
   });
