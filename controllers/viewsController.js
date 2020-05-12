@@ -41,10 +41,22 @@ exports.getAccountRP = catchAsync(async (req, res, next) => {
 });
 
 exports.getAccountRA = catchAsync(async (req, res, next) => {
-  const ads = await Ad.find();
   res.status(200).render('advertiser', {
-    title: 'Advertiser Page',
+    title: 'Advertiser Page'
+  });
+});
+
+exports.getViewAds = catchAsync(async (req, res, next) => {
+  const ads = await Ad.find();
+  res.status(200).render('my-ads', {
+    title: 'View Ads Page',
     ads
+  });
+});
+
+exports.getViewKiosks = catchAsync(async (req, res, next) => {
+  res.status(200).render('my-kiosks', {
+    title: 'View Kiosks Page'
   });
 });
 

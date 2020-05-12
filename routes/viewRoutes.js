@@ -15,5 +15,7 @@ router.get(
 );
 router.get('/publisher', authController.protect, viewsController.getAccountRP);
 router.get('/advertiser', authController.protect, viewsController.getAccountRA);
+router.get('/my-ads', authController.protect, viewsController.getViewAds);
+router.get('/my-kiosks', authController.protect, viewsController.getViewKiosks);
 
 module.exports = router;
