@@ -348,6 +348,12 @@ button {
   text-align: center;
 }
 
+/* footer */
+
+.footer {
+  flex-shrink: 0;
+}
+
 /* Profiles Page */
 .profile {
   display: grid;

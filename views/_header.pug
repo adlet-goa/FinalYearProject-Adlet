@@ -4,13 +4,16 @@ mixin navItem(link, text, active)
 
 nav.navbar.bg-dark
     h1
-        a(href='/')
+        a(href='#')
             | Adlet
     if user
         ul
             li
             a(href='/me')
                 span= user.name.split(' ')[0]
+            li
+            a(href=`${user.role}`)
+                span= user.role    
             +navItem('/my-settings', 'Settings')
             +navItem('#', 'Billing')
             li

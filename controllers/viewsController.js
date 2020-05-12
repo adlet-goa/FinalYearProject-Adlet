@@ -1,13 +1,10 @@
 const User = require('../models/userModel');
 const Kiosk = require('../models/kioskModel');
+const Ad = require('../models/adModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  // 1) Get tour data from collection
-
-  // 2) Build template
-  // 3) Render that template using tour data from 1)
   res.status(200).render('overview', {
     title: 'Landing Page'
   });
@@ -33,7 +30,21 @@ exports.getAccount = (req, res) => {
 
 exports.getAccountSettings = catchAsync(async (req, res, next) => {
   res.status(200).render('settings', {
-    title: 'Landing Page'
+    title: 'Settings Page'
+  });
+});
+
+exports.getAccountRP = catchAsync(async (req, res, next) => {
+  res.status(200).render('publisher', {
+    title: 'Publisher Page'
+  });
+});
+
+exports.getAccountRA = catchAsync(async (req, res, next) => {
+  const ads = await Ad.find();
+  res.status(200).render('advertiser', {
+    title: 'Advertiser Page',
+    ads
   });
 });
 
