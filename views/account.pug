@@ -2,4 +2,6 @@ extends base
 
 block content
     section.container
-        h1.large.text-primary Your account page
+        h1.large.text-primary 
+            | Welcome  
+            span= user.name.split(' ')[0]
