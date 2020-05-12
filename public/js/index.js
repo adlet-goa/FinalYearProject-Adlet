@@ -3,6 +3,7 @@ import '@babel/polyfill';
 import { login, logout } from './login';
 import { signup } from './signup';
 import { updateSettings } from './updateSettings';
+import { buykiosk } from './buykiosk';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -10,6 +11,7 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const signupForm = document.querySelector('.form--signup');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
+const buykioskForm = document.querySelector('.form--buykiosk');
 
 // DELEGATION
 
@@ -59,4 +61,15 @@ if (userPasswordForm)
     document.getElementById('password-current').value = '';
     document.getElementById('password').value = '';
     document.getElementById('password-confirm').value = '';
+  });
+
+if (buykioskForm)
+  buykioskForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const address = document.getElementById('address').value;
+    const description = document.getElementById('description').value;
+    const operatingHours = document.getElementById('operatingHours').value;
+    const operatingDays = document.getElementById('operatingDays').value;
+    buykiosk(name, address, description, operatingHours, operatingDays);
   });
