@@ -1,0 +1,45 @@
+extends base
+
+block content
+    section.container
+        p.lead Welcome #{user.name.split(' ')[0]}
+        form.form.form--kiosk
+            .form-group
+            input#name(type='text' placeholder='Name' name='name' required='')
+            .form-group
+            a.small.form-text.form--kioskGeo
+                | Latitude
+            input#lat(type='point' placeholder='Coordinates' name='coordinates' required='')
+            .form-group
+            a.small.form-text.form--kioskGeo
+                | Longitude
+            input#lon(type='point' placeholder='Coordinates' name='coordinates' required='')
+            .form-group
+            input#address(type='text' placeholder='Address' name='address' required='')
+            .form-group
+            input#description(type='text' placeholder='Description' name='description' required='')
+            .form-group
+            small.form-text
+                | Operating Hours
+            select#operatingHours(type='text' placeholder='Operating Hours' name='operatingHours' required='')
+                option(value='9to5') 9 - 5
+                option(value='9to8') 9 - 8
+                option(value='24h') 24h
+            .form-group
+            small.form-text
+                | Operating Days
+            select#operatingDays(type='text' placeholder='Operating Days' name='operatingDays' required='')
+                option(value='mon-fri') Mon-Fri
+                option(value='mon-sat') Mon-Fri
+                option(value='full-week') Full Week  
+            .form-group
+            small.form-text
+                | Screen Size
+            select#screenSize(type='number' placeholder='Screen Size' name='screenSize' required='')
+                option(value='40') 40
+                option(value='43') 43
+                option(value='50') 50    
+                option(value='55') 55
+            .form-group                
+            input.btn.btn-primary(type='submit' value='Buy Kiosk')
+            

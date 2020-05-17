@@ -1,0 +1,27 @@
+extends base
+
+block content
+    section.container
+        h1.large.text-primary Your account settings
+        p.lead Change Name and email.
+        form.form.form-user-data
+            .form-group
+            input#name(type='text', placeholder=`${user.name}`, required, name='name')
+            .form-group
+            input#email(type='email', placeholder=`${user.email}`, required, name='email')
+            .form-group
+            button.btn.btn-primary Save settings
+
+            .my-2
+                button.btn.btn-danger Delete My Account
+
+        //- p.lead Change password
+        //- form.form.form-user-password
+        //-     .form-group
+        //-     input#password-current(type='password', placeholder='Current password', required, minlength='8')
+        //-     .form-group
+        //-     input#password(type='password', placeholder='New password', required, minlength='8')
+        //-     .form-group
+        //-     input#password-confirm(type='password', placeholder='Confirm password', required, minlength='8')
+        //-     .form-group
+        //-     button.btn.btn-primary Save password

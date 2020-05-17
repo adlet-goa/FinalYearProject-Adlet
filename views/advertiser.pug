@@ -1,0 +1,43 @@
+extends base
+
+block content
+    section.container
+        p.lead Welcome #{user.name.split(' ')[0]}
+        form.form.form--ads
+                .form-group
+                input#title(type='text' placeholder='Title' name='title' required='')
+                .form-group
+                small.form-text
+                    | MimeType
+                select#operatingHours(type='text' placeholder='Operating Hours' name='operatingHours' required='')
+                    option(value='image') Image
+                    option(value='video') Video
+                .form-group
+                small.form-text
+                    | Category
+                select#operatingDays(type='text' placeholder='Operating Days' name='operatingDays' required='')
+                    option(value='product') Product
+                    option(value='service') Service
+                    option(value='event') Event
+                    option(value='emergency') Emergency
+                    option(value='awareness') Awareness
+                .form-group
+                small.form-text
+                    | Run campaign till
+                input#date(type='date' placeholder='Date' name='date' required='')
+                .form-group
+                small.form-text
+                    | Operating Hours
+                select#operatingHours(type='text' placeholder='Operating Hours' name='operatingHours' required='')
+                    option(value='9to5') 9 - 5
+                    option(value='9to8') 9 - 8
+                    option(value='24h') 24h
+                .form-group
+                small.form-text
+                    | Operating Days
+                select#operatingDays(type='text' placeholder='Operating Days' name='operatingDays' required='')
+                    option(value='mon-fri') Mon-Fri
+                    option(value='mon-sat') Mon-Fri
+                    option(value='full-week') Full Week  
+                .form-group                
+                input.btn.btn-primary(type='submit' value='Buy Kiosk')

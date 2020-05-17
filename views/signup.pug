@@ -1,0 +1,30 @@
+extends base
+
+block content
+    section.landing
+        section.container
+            h1.large.text-primary Sign Up
+            p.lead
+                i.fas.fa-user
+                |  Create Your Account
+            form.form.form--signup
+                .form-group
+                input#name(type='text' placeholder='Name' name='name' required='')
+                .form-group
+                input#email(type='email' placeholder='Email Address' name='email')
+                small.form-text
+                    | This site uses Gravatar so if you want a profile image, use a
+                    | Gravatar email
+                .form-group
+                select#role(type='text' placeholder='Publisher / Advertiser' name='role' required='')
+                    option(value='Publisher') Publisher
+                    option(value='Advertiser') Advertiser
+                .form-group
+                input#password(type='password' placeholder='Password' name='password' minlength='8')
+                .form-group
+                input#passwordConfirm(type='password' placeholder='Confirm Password' name='passwordConfirm' minlength='8')
+                .form-group
+                input.btn.btn-primary(type='submit' value='Sign Up')
+            p.my-1
+                | Already have an account? 
+                a(href='/login') Sign In

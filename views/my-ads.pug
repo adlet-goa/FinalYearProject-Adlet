@@ -1,0 +1,21 @@
+extends base
+
+block content
+    section.container
+        h2.my-2 Advertising campaigns running !
+        table.table
+            thead
+                tr
+                    th Title
+                    th.hide-sm Category
+                    th.hide-sm Created on
+                    th Delete
+            each ad in ads
+                tbody.table
+                    tr
+                        td= ad.title
+                        td.hide-sm= ad.category
+                        td.hide-sm= ad.createdat
+                        td
+                            button.btn.btn-danger Delete
+        a.btn.btn-light.dash-buttons(href='#') Buy advertising space                    

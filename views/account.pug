@@ -1,0 +1,12 @@
+extends base
+
+block content
+    section.container
+        h1.large.text-primary 
+            | Welcome  
+            span= user.name.split(' ')[0]
+        if (user.role == "publisher")
+            a.btn.btn-light(href='/my-kiosks') View Active Advertisements
+        else 
+           a.btn.btn-light(href='/my-ads') View Active Advertisements
+
