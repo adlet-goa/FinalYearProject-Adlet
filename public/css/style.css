@@ -315,7 +315,6 @@ button {
   width: 100%;
   top: 0;
   border-bottom: solid 1px var(--primary-color);
-  opacity: 0.9;
 }
 
 .navbar ul {
@@ -611,8 +610,11 @@ button {
 
 .section-map {
   position: relative;
+  left: 0;
+  bottom: 0;
+  width: 80;
   height: 30rem;
-  margin-top: calc(0px - var(--section-rotate));
+  margin-top:3rem;
 }
 
 #map {
