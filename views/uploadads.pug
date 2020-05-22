@@ -1,0 +1,10 @@
+extends base
+
+block content
+    section.container
+        p.lead Upload Ad 
+        form.form.form--uploadads
+            .form-group
+            input#media(type='file' name='media' required='' accept='audio/*|video/*|image/*|media_type')
+            .form-group                
+            input.btn.btn-primary(type='submit' value='Buy ad')

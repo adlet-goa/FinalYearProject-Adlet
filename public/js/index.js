@@ -4,6 +4,7 @@ import { login, logout } from './login';
 import { signup } from './signup';
 import { updateSettings } from './updateSettings';
 import { buykiosk } from './buykiosk';
+import {buyad} from './buyad';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -13,6 +14,7 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const buykioskFrom = document.querySelector('.form--kiosk');
 const buykioskFromGeo = document.querySelector('.form--kioskGeo');
+const buyadsForm = document.querySelector('.form--ads');
 
 // DELEGATION
 
@@ -102,4 +104,37 @@ if (buykioskFromGeo)
     } else {
       console.log('geolocation not available');
     }
+  });
+
+  if (buyadsForm)
+  buyadsForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const mimeType = document.getElementById('mimeType').value;
+    const category = document.getElementById('category').value;
+    const dateStart = document.getElementById('dateStart').value;
+    const dateEnd = document.getElementById('dateEnd').value;
+    const displayHours = document.getElementById('displayHours').value;
+    const displayDays = document.getElementById('displayDays').value;
+    const advertiser = document.getElementById('advertiser').value;
+    //for time being
+    //const kiosk = document.getElementById('kiosk').value;
+    const temp = []
+    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    for (var i = 0; i < checkboxes.length; i++) {
+      temp.push(checkboxes[i].value)
+    }
+    const kiosks = temp;
+    console.log(kiosk);
+    buyad(
+      title,
+      mimeType,
+      category,
+      dateStart,
+      dateEnd,
+      displayHours,
+      displayDays,
+      kiosks,
+      advertiser
+    );
   });

@@ -3,19 +3,19 @@ extends base
 block content
     section.container
         p.lead Welcome #{user.name.split(' ')[0]}
-        form.form
+        form.form.form--ads
                 .form-group
                 input#title(type='text' placeholder='Title' name='title' required='')
                 .form-group
                 small.form-text
                     | MimeType
-                select#operatingHours(type='text' placeholder='Operating Hours' name='operatingHours' required='')
+                select#mimeType(type='text' placeholder='Operating Hours' name='mimeType' required='')
                     option(value='image') Image
                     option(value='video') Video
                 .form-group
                 small.form-text
                     | Category
-                select#operatingDays(type='text' placeholder='Operating Days' name='operatingDays' required='')
+                select#category(type='text' placeholder='Operating Days' name='category' required='')
                     option(value='product') Product
                     option(value='service') Service
                     option(value='event') Event
@@ -23,21 +23,40 @@ block content
                     option(value='awareness') Awareness
                 .form-group
                 small.form-text
-                    | Run campaign till
-                input#date(type='date' placeholder='Date' name='date' required='')
+                    | Run campaign from:
+                input#dateStart(type='date' placeholder='Date' name='dateStart' required='')
+                .form-group
+                small.form-text
+                    | Run campaign to:
+                input#dateEnd(type='date' placeholder='Date' name='dateEnd' required='')
+                .form-group
+                small.from-text
+                    | Select Kiosk 
+                br
+                //- select#kiosk(type='text' placeholder='select kiosk' name='kiosk' required='')
+                //-    each kiosk in kiosks
+                //-     option(value=kiosk.id)= kiosk.location.address
+
+                each kiosk in kiosks
+                    input#kiosk(type='checkbox' name='kiosk' value=kiosk.id)
+                    label
+                        small.from-text(for=kiosk.id)= kiosk.location.address
+                    br
                 .form-group
                 small.form-text
                     | Operating Hours
-                select#operatingHours(type='text' placeholder='Operating Hours' name='operatingHours' required='')
+                select#displayHours(type='text' placeholder='Operating Hours' name='displayHours' required='')
                     option(value='9to5') 9 - 5
                     option(value='9to8') 9 - 8
                     option(value='24h') 24h
                 .form-group
                 small.form-text
                     | Operating Days
-                select#operatingDays(type='text' placeholder='Operating Days' name='operatingDays' required='')
+                select#displayDays(type='text' placeholder='Operating Days' name='displayDays' required='')
                     option(value='mon-fri') Mon-Fri
-                    option(value='mon-sat') Mon-Fri
-                    option(value='full-week') Full Week  
+                    option(value='mon-sat') Mon-Sat
+                    option(value='full-week') Full Week
+                .form-group
+                input#advertiser(type='password' name='advertiser' value=user.id)
                 .form-group                
-                input.btn.btn-primary(type='submit' value='Buy Kiosk')
+                input.btn.btn-primary(type='submit' value='Buy Ad')

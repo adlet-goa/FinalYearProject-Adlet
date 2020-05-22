@@ -5,8 +5,10 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
+  const kiosks = await Kiosk.find();
   res.status(200).render('overview', {
-    title: 'Landing Page'
+    title: 'Landing Page',
+    kiosks
   });
 });
 
@@ -41,8 +43,15 @@ exports.getAccountRP = catchAsync(async (req, res, next) => {
 });
 
 exports.getAccountRA = catchAsync(async (req, res, next) => {
+  const kiosks = await Kiosk.find();
   res.status(200).render('advertiser', {
-    title: 'Advertiser Page'
+    title: 'Advertiser Page',
+    kiosks
+  });
+});
+exports.getUploadAds = catchAsync(async (req, res, next) => {
+  res.status(200).render('uploadads', {
+    title: 'View Upload Ads Page'
   });
 });
 
