@@ -3,9 +3,38 @@ extends base
 block content
   section.landing
     .dark-overlay
-      .landing-inner
-        h1.x-large Adlet
-        p.lead some promo sample text
-        .buttons
-          a.btn.btn-primary(href='/signup') Sign Up
-          a.btn.btn-light(href='/login') Login
+        section.container
+          .profile-grid.my-1
+            .profile-top.bg-primary.p-2
+              img.round-img.my-1(src='../img/landingImg.svg' alt='Landing Img')
+              h1.large Adlet
+              p.lead Advertising made easy!
+              .buttons
+                a.btn.btn-success(href='/signup') Sign Up
+                a.btn.btn-light(href='/login') Login
+            .profile-about.bg-light.p-2
+              h1.x-large
+                | We help you with...
+                .line
+              p.lead Reaching the right people with the right message at the right time.
+              .line
+              p.lead Affordable and scalable advertising solution.
+              .line
+              p.lead Non Invasive form of advertising.
+          .profile-about.bg-light.p-2
+              h2.text-primary.text-dark Our Social Links
+              .line
+              .my-1
+                a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                  i.fas.fa-globe.fa-2x
+                a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                  i.fab.fa-twitter.fa-2x
+                a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                  i.fab.fa-facebook.fa-2x
+                a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                  i.fab.fa-linkedin.fa-2x
+                a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                  i.fab.fa-youtube.fa-2x
+                a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                  i.fab.fa-instagram.fa-2x
+
