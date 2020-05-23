@@ -5,6 +5,7 @@ import { signup } from './signup';
 import { updateSettings } from './updateSettings';
 import { buykiosk } from './buykiosk';
 import {buyad} from './buyad';
+import {uploadads} from './uploadads';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -15,6 +16,7 @@ const userPasswordForm = document.querySelector('.form-user-password');
 const buykioskFrom = document.querySelector('.form--kiosk');
 const buykioskFromGeo = document.querySelector('.form--kioskGeo');
 const buyadsForm = document.querySelector('.form--ads');
+const uploadadsForm = document.querySelector('.form--uploadads');
 
 // DELEGATION
 
@@ -125,7 +127,6 @@ if (buykioskFromGeo)
       temp.push(checkboxes[i].value)
     }
     const kiosks = temp;
-    console.log(kiosk);
     buyad(
       title,
       mimeType,
@@ -138,3 +139,16 @@ if (buykioskFromGeo)
       advertiser
     );
   });
+
+
+  if (uploadadsForm)
+  uploadadsForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const adsid = document.getElementById('aadsid').value;
+    const form = new FormData();
+    form.append('content', document.getElementById('content').files[0]);
+    console.log(form);
+
+    uploadads(adsid, form, 'data');
+  });
+
