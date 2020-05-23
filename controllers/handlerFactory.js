@@ -1,6 +1,7 @@
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const APIFeatures = require('./../utils/apiFeatures');
+const Email = require('./../utils/email');
 
 exports.deleteOne = Model =>
   catchAsync(async (req, res, next) => {
@@ -38,6 +39,14 @@ exports.updateOne = Model =>
 exports.createOne = Model =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.create(req.body);
+
+    let topic = req.originalUrl.replace('/api/v1/', '');
+
+    const url = `${req.protocol}://${req.get('host')}/my-${topic}`;
+
+    topic = topic.slice(0, -1).toUpperCase();
+
+    await new Email(req.user, [doc.id, url], topic).sendId();
 
     res.status(201).json({
       status: 'success',
