@@ -610,11 +610,8 @@ button {
 
 .section-map {
   position: relative;
-  left: 0;
   bottom: 0;
-  width: 80;
   height: 30rem;
-  margin-top:3rem;
 }
 
 #map {
@@ -627,7 +624,7 @@ button {
 .marker {
   background-image: url(../img/kioskmarker.png);
   background-size: cover;
-  width: 32px ;
-  height: 40px ;
+  width: 32px;
+  height: 40px;
   cursor: pointer;
 }
