@@ -4,7 +4,7 @@ import { showAlert } from './alerts';
 
 export const getads = async kioskid => {
   try {
-    const apiurl = `http://127.0.0.1:3000/api/v1/kiosks/${kioskid}/ads`;
+    const apiurl = `http://127.0.0.1:8000/api/v1/kiosks/${kioskid}/ads`;
     const response = await axios.get(apiurl);
     if (response.data.status === 'success') {
       showAlert('success', 'Ads fetched successfully!');

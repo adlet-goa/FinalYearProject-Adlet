@@ -2,13 +2,11 @@
 import axios from 'axios';
 import { showAlert } from './alerts';
 
-export const uploadads = async (
-  media
-) => {
+export const uploadads = async media => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: 'http://127.0.0.1:3000/api/v1/ads',
+      url: 'http://127.0.0.1:8000/api/v1/ads',
       data: {
         media
       }
