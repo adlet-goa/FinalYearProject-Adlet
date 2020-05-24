@@ -6,6 +6,8 @@ import { updateSettings } from './updateSettings';
 import { buykiosk } from './buykiosk';
 import {buyad} from './buyad';
 import {uploadads} from './uploadads';
+import {bookAd} from './stripe';
+
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -17,6 +19,7 @@ const buykioskFrom = document.querySelector('.form--kiosk');
 const buykioskFromGeo = document.querySelector('.form--kioskGeo');
 const buyadsForm = document.querySelector('.form--ads');
 const uploadadsForm = document.querySelector('.form--uploadads');
+const bookbtn = document.getElementById('.form--payment');
 
 // DELEGATION
 
@@ -144,7 +147,7 @@ if (buykioskFromGeo)
   if (uploadadsForm)
   uploadadsForm.addEventListener('submit', e => {
     e.preventDefault();
-    const adsid = document.getElementById('aadsid').value;
+    const adsid = document.getElementById('adsid').value;
     const form = new FormData();
     form.append('content', document.getElementById('content').files[0]);
     console.log(form);
@@ -152,3 +155,12 @@ if (buykioskFromGeo)
     uploadads(adsid, form, 'data');
   });
 
+  if (bookbtn)
+  bookbtn.addEventListener('submit', e => {
+    e.preventDefault();
+    const adId = document.getElementById('adId').value;
+    console.log(adId);
+    bookAd(
+      adId
+    );
+  });

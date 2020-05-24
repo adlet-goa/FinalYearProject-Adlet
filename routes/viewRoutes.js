@@ -2,7 +2,7 @@ const express = require('express');
 const viewsController = require('../controllers/viewsController');
 const authController = require('../controllers/authController');
 const adController = require('../controllers/adController');
-
+  
 const router = express.Router();
 
 router.get('/', authController.isLoggedIn, viewsController.getOverview);
@@ -19,5 +19,6 @@ router.get('/advertiser', authController.protect, viewsController.getAccountRA);
 router.get('/my-ads', authController.protect, viewsController.getViewAds);
 router.get('/my-kiosks', authController.protect, viewsController.getViewKiosks);
 router.get('/uploadads', authController.protect, viewsController.getUploadAds);
+router.get('/payment', authController.protect, viewsController.getPayment);
 
 module.exports = router;

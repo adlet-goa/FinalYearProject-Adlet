@@ -14,7 +14,7 @@ export const uploadads = async (adsid, data) => {
     if (res.data.status === 'success') {
       showAlert('success', 'Ad uploaded successfully!');
       window.setTimeout(() => {
-        location.assign('/me');
+        location.assign('/payment');
       }, 2500);
     }
   } catch (err) {

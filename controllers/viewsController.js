@@ -88,3 +88,10 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getPayment= catchAsync(async (req, res, next) => {
+  const ads = await Ad.find();
+  res.status(200).render('payment', {
+    title: 'View Payment Page',
+    ads
+  });
+});
