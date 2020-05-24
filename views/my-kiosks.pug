@@ -3,4 +3,23 @@ extends base
 block content
     section.container
         h2.my-2 Advertising campaigns running !
-        a.btn.btn-light.dash-buttons(href='#') Buy advertising space
+        form.form.el--getads
+            .form-group
+            small.form-text
+                | Enter Kiosk Id
+            input#kioskid(type='text', placeholder='Kiosk Id', name='kioskid')
+            .form-group
+            input.btn.btn-primary(type='submit' value='Get')
+            .form-group
+            table.table
+                thead#showHead
+                tbody#showData
+        form.form.el--getMyKiosks
+            .form-group
+            input.btn.btn-primary.el--getMyKiosks( type= 'button' value='Get my Kiosks')
+            .form-group
+            table.table
+                thead#showHeadK
+                tbody#showDataK        
+        .my-2
+            a.btn.btn-light.dash-buttons(href='#') Buy advertising space

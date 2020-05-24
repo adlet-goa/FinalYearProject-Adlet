@@ -1,10 +1,13 @@
 /* eslint-disable */
 import '@babel/polyfill';
+
 import { login, logout } from './login';
 import { signup } from './signup';
 import { updateSettings } from './updateSettings';
 import { buykiosk } from './buykiosk';
-import {buyad} from './buyad';
+import { buyad } from './buyad';
+import { getads, getMyKiosks } from './getads';
+import { getmyads } from './getmyads';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -15,6 +18,9 @@ const userPasswordForm = document.querySelector('.form-user-password');
 const buykioskFrom = document.querySelector('.form--kiosk');
 const buykioskFromGeo = document.querySelector('.form--kioskGeo');
 const buyadsForm = document.querySelector('.form--ads');
+const getAdsBtn = document.querySelector('.el--getads');
+const getMyKiosksBtn = document.querySelector('.el--getMyKiosks');
+const getMyAdsBtn = document.querySelector('.el--getMyAds');
 
 // DELEGATION
 
@@ -97,7 +103,6 @@ if (buykioskFromGeo)
       navigator.geolocation.getCurrentPosition(position => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        console.log(lat, lon);
         document.getElementById('lat').value = lat;
         document.getElementById('lon').value = lon;
       });
@@ -106,7 +111,7 @@ if (buykioskFromGeo)
     }
   });
 
-  if (buyadsForm)
+if (buyadsForm)
   buyadsForm.addEventListener('submit', e => {
     e.preventDefault();
     const title = document.getElementById('title').value;
@@ -119,10 +124,10 @@ if (buykioskFromGeo)
     const advertiser = document.getElementById('advertiser').value;
     //for time being
     //const kiosk = document.getElementById('kiosk').value;
-    const temp = []
-    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    const temp = [];
+    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
     for (var i = 0; i < checkboxes.length; i++) {
-      temp.push(checkboxes[i].value)
+      temp.push(checkboxes[i].value);
     }
     const kiosks = temp;
     console.log(kiosk);
@@ -137,4 +142,21 @@ if (buykioskFromGeo)
       kiosks,
       advertiser
     );
+  });
+
+if (getAdsBtn)
+  getAdsBtn.addEventListener('submit', e => {
+    e.preventDefault();
+    const kioskid = document.getElementById('kioskid').value;
+    getads(kioskid);
+  });
+
+if (getMyKiosksBtn)
+  getMyKiosksBtn.addEventListener('click', e => {
+    getMyKiosks();
+  });
+
+if (getMyAdsBtn)
+  getMyAdsBtn.addEventListener('click', e => {
+    getMyAds();
   });

@@ -1,12 +1,44 @@
 extends base
 
+block append head
+    script(src='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js')
+    link(href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet')
+
 block content
-    section.container
-        h1.large.text-primary 
-            | Welcome  
-            span= user.name.split(' ')[0]
-        if (user.role == "publisher")
-            a.btn.btn-light(href='/my-kiosks') View Active Advertisements
-        else 
-           a.btn.btn-light(href='/my-ads') View Active Advertisements
+    section.landing
+        .dark-overlay
+            section.container
+                .profile-grid.my-1
+                    .profile-top.bg-primary.p-2
+                        img.round-img.my-1(src='../img/landingImg.svg' alt='Landing Img')
+                        h1.x-large.text-dark ADlet
+                        p.lead Advertising made easy!
+                        h1.lead.text-dark 
+                            | Welcome  
+                            span= user.name.split(' ')[0]
+                        if (user.role == "publisher")
+                            a.btn.btn-light(href='/my-kiosks') View Active Advertisements
+                        else 
+                            a.btn.btn-light(href='/my-ads') View Active Advertisements
+            .profile-about.bg-light.p-2
+                h2.text-primary.text-dark Our Social Links
+                .line
+                .my-1
+                    a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                        i.fas.fa-globe.fa-2x
+                    a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                        i.fab.fa-twitter.fa-2x
+                    a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                        i.fab.fa-facebook.fa-2x
+                    a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                        i.fab.fa-linkedin.fa-2x
+                    a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                        i.fab.fa-youtube.fa-2x
+                    a.p-1(href='#' target='_blank' rel='noopener noreferrer')
+                        i.fab.fa-instagram.fa-2x
+            .profile-about.bg-light.p-2
+                h2.text-primary.text-dark We are here...
+                //- section.section-map
+                //-     each kiosk in kiosks
+                //-         #map.loc(data-locations=`${JSON.stringify(kiosk.location)}`)
 
