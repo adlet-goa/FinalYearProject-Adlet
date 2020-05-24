@@ -8,8 +8,10 @@ export async function getMyAds() {
     const response = await axios.get(apiurl);
     if (response.data.status === 'success') {
       showAlert('success', 'Ads fetched successfully!');
-      const myads = response.data.data.kiosks;
-      console.log(myads.length);
+      console.log(response.data);
+      
+      const myads = response.data.data.ads;
+      console.log(myads);
       if (myads.length > 0) {
         var temph = '';
         var tempb = '';

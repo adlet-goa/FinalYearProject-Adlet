@@ -5,7 +5,6 @@ import { login, logout } from './login';
 import { signup } from './signup';
 import { updateSettings } from './updateSettings';
 import { buykiosk } from './buykiosk';
-import { buyad } from './buyad';
 import { getads, getMyKiosks } from './getads';
 import { getMyAds } from './getmyads';
 import { getResetmail, resetpassword } from './reset-pass';

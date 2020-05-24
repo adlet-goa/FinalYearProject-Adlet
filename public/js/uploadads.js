@@ -4,13 +4,13 @@ import { showAlert } from './alerts';
 
 export const uploadads = async (adsid, data) => {
   try {
-    const link = `http://127.0.0.1:3000/api/v1/ads/${adsid}`
+    const link = `http://127.0.0.1:8000/api/v1/ads/${adsid}`
     const res = await axios({
       method: 'PATCH',
       url:link,
       data
     });
-
+ 
     if (res.data.status === 'success') {
       showAlert('success', 'Ad uploaded successfully!');
       window.setTimeout(() => {

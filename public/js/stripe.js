@@ -6,7 +6,7 @@ const stripe = Stripe('pk_test_9h9uyzwXqnfQOClQxJzIpqW200sdM8dkaa');
 export const bookAd = async adId => {
   try { 
     // 1) Get checkout session from API
-    const session = await axios(`http://127.0.0.1:3000/api/v1/bookings/checkout-session/${adId}`);
+    const session = await axios(`http://127.0.0.1:8000/api/v1/bookings/checkout-session/${adId}`);
     console.log(session);
     // 2) Create checkout form + chanre credit card
     await stripe.redirectToCheckout({
