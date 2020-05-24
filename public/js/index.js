@@ -8,7 +8,7 @@ import { buykiosk } from './buykiosk';
 import { buyad } from './buyad';
 import { getads, getMyKiosks } from './getads';
 import { getMyAds } from './getmyads';
-import { getResetmail } from './reset-pass';
+import { getResetmail, resetpassword } from './reset-pass';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -17,6 +17,7 @@ const signupForm = document.querySelector('.form--signup');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const resetpassMail = document.querySelector('.form--get-reset-link');
+const resetpass = document.querySelector('.form--reset-pass');
 const buykioskFrom = document.querySelector('.form--kiosk');
 const buykioskFromGeo = document.querySelector('.form--kioskGeo');
 const buyadsForm = document.querySelector('.form--ads');
@@ -50,6 +51,23 @@ if (resetpassMail)
     e.preventDefault();
     const email = document.getElementById('email').value;
     getResetmail(email);
+  });
+
+if (resetpass)
+  resetpass.addEventListener('submit', async e => {
+    e.preventDefault();
+    document.querySelector('.btn--reset-password').textContent = 'Updating...';
+
+    const token = document.getElementById('token').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('password-confirm').value;
+
+    await resetpassword(token, password, passwordConfirm);
+
+    document.querySelector('.btn--reset-password').textContent =
+      'Reset password';
+    document.getElementById('password').value = '';
+    document.getElementById('password-confirm').value = '';
   });
 
 if (logOutBtn) logOutBtn.addEventListener('click', logout);

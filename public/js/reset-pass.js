@@ -22,3 +22,26 @@ export const getResetmail = async email => {
     showAlert('error', err.response.data.message);
   }
 };
+
+export const resetpassword = async (token, password, passwordConfirm) => {
+  try {
+    const apiurl = `http://127.0.0.1:8000/api/v1/users/resetPassword/${token}`;
+    const res = await axios({
+      method: 'PATCH',
+      url: apiurl,
+      data: {
+        password,
+        passwordConfirm
+      }
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'Password Changed!');
+      window.setTimeout(() => {
+        location.assign('/me');
+      }, 1500);
+    }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};

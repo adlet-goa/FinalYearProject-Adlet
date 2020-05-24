@@ -35,7 +35,7 @@ export const getads = async kioskid => {
 
 export async function getMyKiosks() {
   try {
-    const apiurl = 'http://127.0.0.1:3000/api/v1/users/getMyKiosks';
+    const apiurl = 'http://127.0.0.1:8000/api/v1/users/getMyKiosks';
     const response = await axios.get(apiurl);
     if (response.data.status === 'success') {
       showAlert('success', 'Ads fetched successfully!');
