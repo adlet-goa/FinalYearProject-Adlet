@@ -7,7 +7,8 @@ import { updateSettings } from './updateSettings';
 import { buykiosk } from './buykiosk';
 import { buyad } from './buyad';
 import { getads, getMyKiosks } from './getads';
-import { getmyads } from './getmyads';
+import { getMyAds } from './getmyads';
+import { getResetmail } from './reset-pass';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -15,6 +16,7 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const signupForm = document.querySelector('.form--signup');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
+const resetpassMail = document.querySelector('.form--get-reset-link');
 const buykioskFrom = document.querySelector('.form--kiosk');
 const buykioskFromGeo = document.querySelector('.form--kioskGeo');
 const buyadsForm = document.querySelector('.form--ads');
@@ -41,6 +43,13 @@ if (signupForm)
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('passwordConfirm').value;
     signup(name, email, role, password, passwordConfirm);
+  });
+
+if (resetpassMail)
+  resetpassMail.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    getResetmail(email);
   });
 
 if (logOutBtn) logOutBtn.addEventListener('click', logout);

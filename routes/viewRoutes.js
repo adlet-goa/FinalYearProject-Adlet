@@ -18,5 +18,7 @@ router.get('/advertiser', authController.protect, viewsController.getAccountRA);
 router.get('/my-ads', authController.protect, viewsController.getViewAds);
 router.get('/my-kiosks', authController.protect, viewsController.getViewKiosks);
 router.get('/uploadads', authController.protect, viewsController.getUploadAds);
+router.get('/forgot-password', viewsController.getResetPasswordMail);
+router.get('/reset-password', viewsController.getResetPasswordForm);
 
 module.exports = router;
