@@ -49,6 +49,7 @@ if (signupForm)
 if (resetpassMail)
   resetpassMail.addEventListener('submit', e => {
     e.preventDefault();
+    document.querySelector('.btn--reset-password').textContent = 'Updating...';
     const email = document.getElementById('email').value;
     getResetmail(email);
   });
@@ -66,6 +67,7 @@ if (resetpass)
 
     document.querySelector('.btn--reset-password').textContent =
       'Reset password';
+    document.getElementById('token').value = '';
     document.getElementById('password').value = '';
     document.getElementById('password-confirm').value = '';
   });

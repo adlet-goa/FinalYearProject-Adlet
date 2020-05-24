@@ -8464,7 +8464,7 @@ var buykiosk = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/kiosks',
+              url: 'http://127.0.0.1:8000/api/v1/kiosks',
               data: {
                 name: name,
                 location: {
@@ -8539,7 +8539,7 @@ var buyad = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/ads',
+              url: 'http://127.0.0.1:8000/api/v1/ads',
               data: {
                 title: title,
                 mimeType: mimeType,
@@ -8677,7 +8677,7 @@ function _getMyKiosks() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.prev = 0;
-            apiurl = 'http://127.0.0.1:3000/api/v1/users/getMyKiosks';
+            apiurl = 'http://127.0.0.1:8000/api/v1/users/getMyKiosks';
             _context2.next = 4;
             return _axios.default.get(apiurl);
 
@@ -8807,7 +8807,7 @@ function _getMyAds() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getResetmail = void 0;
+exports.resetpassword = exports.getResetmail = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8868,6 +8868,58 @@ var getResetmail = /*#__PURE__*/function () {
 }();
 
 exports.getResetmail = getResetmail;
+
+var resetpassword = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(token, password, passwordConfirm) {
+    var apiurl, res;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            apiurl = "http://127.0.0.1:8000/api/v1/users/resetPassword/".concat(token);
+            _context2.next = 4;
+            return (0, _axios.default)({
+              method: 'PATCH',
+              url: apiurl,
+              data: {
+                password: password,
+                passwordConfirm: passwordConfirm
+              }
+            });
+
+          case 4:
+            res = _context2.sent;
+
+            if (res.data.status === 'success') {
+              (0, _alerts.showAlert)('success', 'Password Changed!');
+              window.setTimeout(function () {
+                location.assign('/me');
+              }, 1500);
+            }
+
+            _context2.next = 11;
+            break;
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](0);
+            (0, _alerts.showAlert)('error', _context2.t0.response.data.message);
+
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 8]]);
+  }));
+
+  return function resetpassword(_x2, _x3, _x4) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+exports.resetpassword = resetpassword;
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -9154,6 +9206,7 @@ var signupForm = document.querySelector('.form--signup');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
 var resetpassMail = document.querySelector('.form--get-reset-link');
+var resetpass = document.querySelector('.form--reset-pass');
 var buykioskFrom = document.querySelector('.form--kiosk');
 var buykioskFromGeo = document.querySelector('.form--kioskGeo');
 var buyadsForm = document.querySelector('.form--ads');
@@ -9178,9 +9231,43 @@ if (signupForm) signupForm.addEventListener('submit', function (e) {
 });
 if (resetpassMail) resetpassMail.addEventListener('submit', function (e) {
   e.preventDefault();
+  document.querySelector('.btn--reset-password').textContent = 'Updating...';
   var email = document.getElementById('email').value;
   (0, _resetPass.getResetmail)(email);
 });
+if (resetpass) resetpass.addEventListener('submit', /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
+    var token, password, passwordConfirm;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            e.preventDefault();
+            document.querySelector('.btn--reset-password').textContent = 'Updating...';
+            token = document.getElementById('token').value;
+            password = document.getElementById('password').value;
+            passwordConfirm = document.getElementById('password-confirm').value;
+            _context.next = 7;
+            return (0, _resetPass.resetpassword)(token, password, passwordConfirm);
+
+          case 7:
+            document.querySelector('.btn--reset-password').textContent = 'Reset password';
+            document.getElementById('token').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('password-confirm').value = '';
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+}());
 if (logOutBtn) logOutBtn.addEventListener('click', _login.logout);
 if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -9192,18 +9279,18 @@ if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   }, 'data');
 });
 if (userPasswordForm) userPasswordForm.addEventListener('submit', /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(e) {
     var passwordCurrent, password, passwordConfirm;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
             e.preventDefault();
             document.querySelector('.btn--save-password').textContent = 'Updating...';
             passwordCurrent = document.getElementById('password-current').value;
             password = document.getElementById('password').value;
             passwordConfirm = document.getElementById('password-confirm').value;
-            _context.next = 7;
+            _context2.next = 7;
             return (0, _updateSettings.updateSettings)({
               passwordCurrent: passwordCurrent,
               password: password,
@@ -9218,14 +9305,14 @@ if (userPasswordForm) userPasswordForm.addEventListener('submit', /*#__PURE__*/f
 
           case 11:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
-    }, _callee);
+    }, _callee2);
   }));
 
-  return function (_x) {
-    return _ref.apply(this, arguments);
+  return function (_x2) {
+    return _ref2.apply(this, arguments);
   };
 }());
 if (buykioskFrom) buykioskFrom.addEventListener('submit', function (e) {
@@ -9317,7 +9404,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51601" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51963" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
