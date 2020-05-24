@@ -40,18 +40,17 @@ export async function getMyKiosks() {
     if (response.data.status === 'success') {
       showAlert('success', 'Ads fetched successfully!');
       const mykiosks = response.data.data.kiosks;
-      console.log(mykiosks.length);
       if (mykiosks.length > 0) {
         var temph = '';
         var tempb = '';
         temph += '<tr>';
         temph += '<th>Title';
-        temph += '<th>Created On';
+        temph += '<th>Used Slots';
         document.getElementById('showHeadK').innerHTML = temph;
         mykiosks.forEach(element => {
           tempb += '<tr>';
-          tempb += '<td>' + element.title;
-          tempb += '<td>' + element.createdAt;
+          tempb += '<td>' + element.name;
+          tempb += '<td>' + element.usedSlot;
         });
         document.getElementById('showDataK').innerHTML = tempb;
       } else {

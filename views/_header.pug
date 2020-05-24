@@ -13,7 +13,7 @@ nav.navbar.bg-dark
                 span= user.name.split(' ')[0]
             li
             a(href=`${user.role}`)
-                span= user.role    
+                span= `${user.role.toUpperCase()}`    
             +navItem('/my-settings', 'Settings')
             +navItem('#', 'Billing')
             li

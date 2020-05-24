@@ -8454,7 +8454,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var buykiosk = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name, lat, lon, address, description, operatingHours, operatingDays, screenSize) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name, lat, lon, address, description, operatingHours, operatingDays, screenSize, owner) {
     var res;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -8474,7 +8474,8 @@ var buykiosk = /*#__PURE__*/function () {
                 },
                 operatingHours: operatingHours,
                 operatingDays: operatingDays,
-                screenSize: screenSize
+                screenSize: screenSize,
+                owner: owner
               }
             });
 
@@ -8504,7 +8505,7 @@ var buykiosk = /*#__PURE__*/function () {
     }, _callee, null, [[0, 7]]);
   }));
 
-  return function buykiosk(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8) {
+  return function buykiosk(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -8687,19 +8688,18 @@ function _getMyKiosks() {
             if (response.data.status === 'success') {
               (0, _alerts.showAlert)('success', 'Ads fetched successfully!');
               mykiosks = response.data.data.kiosks;
-              console.log(mykiosks.length);
 
               if (mykiosks.length > 0) {
                 temph = '';
                 tempb = '';
                 temph += '<tr>';
                 temph += '<th>Title';
-                temph += '<th>Created On';
+                temph += '<th>Used Slots';
                 document.getElementById('showHeadK').innerHTML = temph;
                 mykiosks.forEach(function (element) {
                   tempb += '<tr>';
-                  tempb += '<td>' + element.title;
-                  tempb += '<td>' + element.createdAt;
+                  tempb += '<td>' + element.name;
+                  tempb += '<td>' + element.usedSlot;
                 });
                 document.getElementById('showDataK').innerHTML = tempb;
               } else {
@@ -9325,7 +9325,8 @@ if (buykioskFrom) buykioskFrom.addEventListener('submit', function (e) {
   var operatingHours = document.getElementById('operatingHours').value;
   var operatingDays = document.getElementById('operatingDays').value;
   var screenSize = document.getElementById('screenSize').value;
-  (0, _buykiosk.buykiosk)(name, lat, lon, address, description, operatingHours, operatingDays, screenSize);
+  var owner = document.getElementById('owner').value;
+  (0, _buykiosk.buykiosk)(name, lat, lon, address, description, operatingHours, operatingDays, screenSize, owner);
 });
 if (buykioskFromGeo) buykioskFromGeo.addEventListener('click', function (e) {
   e.preventDefault();
@@ -9404,7 +9405,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51963" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52560" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

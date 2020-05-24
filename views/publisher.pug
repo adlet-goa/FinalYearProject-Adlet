@@ -5,8 +5,12 @@ block content
         p.lead Welcome #{user.name.split(' ')[0]}
         form.form.form--kiosk
             .form-group
+            small.form-text
+                | Kiosk Name
             input#name(type='text' placeholder='Name' name='name' required='')
             .form-group
+            small.form-text
+                | Geolocation Data
             a.small.form-text.form--kioskGeo
                 | Latitude
             input#lat(type='point' placeholder='Coordinates' name='coordinates' required='')
@@ -15,8 +19,12 @@ block content
                 | Longitude
             input#lon(type='point' placeholder='Coordinates' name='coordinates' required='')
             .form-group
+            small.form-text
+                | Address
             input#address(type='text' placeholder='Address' name='address' required='')
             .form-group
+            small.form-text
+                | Description
             input#description(type='text' placeholder='Description' name='description' required='')
             .form-group
             small.form-text
@@ -40,6 +48,10 @@ block content
                 option(value='43') 43
                 option(value='50') 50    
                 option(value='55') 55
+            .form-group
+            small.form-text
+                | Owner Id
+            input#owner(type='password' placeholder='Owner' name='owner' value=user.id)
             .form-group                
             input.btn.btn-primary(type='submit' value='Buy Kiosk')
             

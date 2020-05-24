@@ -2,7 +2,8 @@ extends base
 
 block content
     section.container
-        h2.my-2 Advertising campaigns running !
+        h1.large.text-primary Your Dashboard
+        h2.my-2 Get Advertising campaigns running on your Kiosks.
         form.form.el--getads
             .form-group
             small.form-text
@@ -11,13 +12,16 @@ block content
             .form-group
             input.btn.btn-primary(type='submit' value='Get')
             .form-group
+            h2.my-2 Active Advertising campaigns!    
             table.table
                 thead#showHead
                 tbody#showData
+            h2.my-2 Get active Kiosks.   
         form.form.el--getMyKiosks
             .form-group
             input.btn.btn-primary.el--getMyKiosks( type= 'button' value='Get my Kiosks')
             .form-group
+            h2.my-2 Active Kiosks!    
             table.table
                 thead#showHeadK
                 tbody#showDataK        

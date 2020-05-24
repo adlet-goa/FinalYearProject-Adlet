@@ -13,6 +13,11 @@ router.get(
   authController.protect,
   viewsController.getAccountSettings
 );
+router.post(
+  '/submit-user-data',
+  authController.protect,
+  viewsController.updateUserData
+);
 router.get('/publisher', authController.protect, viewsController.getAccountRP);
 router.get('/advertiser', authController.protect, viewsController.getAccountRA);
 router.get('/my-ads', authController.protect, viewsController.getViewAds);

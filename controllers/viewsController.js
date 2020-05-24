@@ -96,8 +96,8 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
     }
   );
 
-  res.status(200).render('account', {
-    title: 'Your account',
+  res.status(200).render('settings', {
+    title: 'Your account settings',
     user: updatedUser
   });
 });

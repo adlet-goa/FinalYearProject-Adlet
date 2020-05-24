@@ -10,7 +10,8 @@ export const buykiosk = async (
   description,
   operatingHours,
   operatingDays,
-  screenSize
+  screenSize,
+  owner
 ) => {
   try {
     const res = await axios({
@@ -25,7 +26,8 @@ export const buykiosk = async (
         },
         operatingHours,
         operatingDays,
-        screenSize
+        screenSize,
+        owner
       }
     });
 

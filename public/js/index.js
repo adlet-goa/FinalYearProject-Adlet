@@ -112,6 +112,7 @@ if (buykioskFrom)
     const operatingHours = document.getElementById('operatingHours').value;
     const operatingDays = document.getElementById('operatingDays').value;
     const screenSize = document.getElementById('screenSize').value;
+    const owner = document.getElementById('owner').value;
     buykiosk(
       name,
       lat,
@@ -120,7 +121,8 @@ if (buykioskFrom)
       description,
       operatingHours,
       operatingDays,
-      screenSize
+      screenSize,
+      owner
     );
   });
 
