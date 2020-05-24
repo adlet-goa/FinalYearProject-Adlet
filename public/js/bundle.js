@@ -8264,7 +8264,7 @@ var logout = /*#__PURE__*/function () {
             _context2.next = 3;
             return (0, _axios.default)({
               method: 'GET',
-              url: 'http://127.0.0.1:3000/api/v1/users/logout'
+              url: 'http://127.0.0.1:8000/api/v1/users/logout'
             });
 
           case 3:
@@ -9242,7 +9242,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50035" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50817" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
