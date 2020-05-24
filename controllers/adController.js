@@ -19,7 +19,7 @@ const serviceKey = path.join(
 
 const gc = new Storage({
   keyFilename: serviceKey,
-  projectId: 'adlet-e4ffd',
+  projectId: 'adlet-e4ffd'
 });
 const bucket = gc.bucket('adlet-e4ffd.appspot.com');
 
@@ -33,14 +33,14 @@ exports.setKioskUserIds = (req, res, next) => {
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    // no larger than 5mb.
-    fileSize: 5 * 1024 * 1024,
-  },
+    // no larger than 10mb.
+    fileSize: 10 * 1024 * 1024
+  }
 });
 
 exports.uploadContent = upload.single('content');
 
-const uploadFile = (file) =>
+const uploadFile = file =>
   new Promise((resolve, reject) => {
     const { originalname, buffer } = file;
 
@@ -48,8 +48,8 @@ const uploadFile = (file) =>
     const blobStream = blob.createWriteStream({
       resumable: false,
       metadata: {
-        contentType: file.mimetype,
-      },
+        contentType: file.mimetype
+      }
     });
 
     blobStream
@@ -93,7 +93,7 @@ exports.setPriceReach = catchAsync(async (req, res, next) => {
   if (!req.body.kiosks || !req.body.duration) return next();
 
   const { ObjectId } = mongoose.Types.ObjectId;
-  const kiosksObjIds = req.body.kiosks.map((el) => new ObjectId(el));
+  const kiosksObjIds = req.body.kiosks.map(el => new ObjectId(el));
   const adKiosks = await Kiosk.find({ _id: { $in: kiosksObjIds } });
 
   const days =
@@ -102,7 +102,7 @@ exports.setPriceReach = catchAsync(async (req, res, next) => {
 
   let p = 0;
   let eR = 0;
-  adKiosks.forEach(function (el) {
+  adKiosks.forEach(function(el) {
     p += el.subscription;
     eR += el.estReach;
   });
