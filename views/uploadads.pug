@@ -5,6 +5,10 @@ block content
         p.lead Upload Ad 
         form.form.form--uploadads
             .form-group
-            input#media(type='file' name='media' required='' accept='audio/*|video/*|image/*|media_type')
-            .form-group                
+            input#content(type='file' name='content' required='' accept='video/*|image/*')
+            .form-group   
+            input#adsid(type='text' placeholder='Advertisement ID' name='adsid' required='')
+            small.form-text
+                | check mail to find Advertisement ID
+            .form-group
             input.btn.btn-primary(type='submit' value='Buy ad')

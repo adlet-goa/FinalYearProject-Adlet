@@ -1,0 +1,12 @@
+extends base
+
+block content
+    section.container
+        p.lead Payment 
+        form.form.form--payment
+            .form-group   
+            input#adId(type='text' placeholder='Advertisement ID' name='adId' required='')
+            small.form-text
+                | check mail to find Advertisement ID
+            .form-group
+            input.btn.btn-primary(type='submit' value='Proceed to payment')
