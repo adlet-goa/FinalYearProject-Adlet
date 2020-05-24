@@ -64,8 +64,10 @@ exports.getViewAds = catchAsync(async (req, res, next) => {
 });
 
 exports.getViewKiosks = catchAsync(async (req, res, next) => {
+  const ads = await Ad.find();
   res.status(200).render('my-kiosks', {
-    title: 'View Kiosks Page'
+    title: 'View Kiosks Page',
+    ads
   });
 });
 
@@ -87,4 +89,3 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
     user: updatedUser
   });
 });
-
