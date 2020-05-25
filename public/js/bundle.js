@@ -8689,9 +8689,7 @@ function _getMyAds() {
 
             if (response.data.status === 'success') {
               (0, _alerts.showAlert)('success', 'Ads fetched successfully!');
-              console.log(response.data);
               myads = response.data.data.ads;
-              console.log(myads);
 
               if (myads.length > 0) {
                 temph = '';
@@ -9555,11 +9553,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-<<<<<<< HEAD
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54152" + '/');
-=======
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65297" + '/');
->>>>>>> 2a889acc578a8f2953dd026cbb8efbb043aa103d
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55974" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

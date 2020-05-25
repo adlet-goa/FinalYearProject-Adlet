@@ -10,13 +10,13 @@ nav.navbar.bg-dark
         ul
             li
             a(href='/me')
-                span= user.name.split(' ')[0]
+                span=`${user.name.split(' ')[0].toUpperCase()}`
             li
             a(href=`${user.role}`)
                 span= `${user.role.toUpperCase()}`    
-            +navItem('/my-settings', 'Settings')
+            +navItem('/my-settings', 'SETTINGS')
             li
-            a.nav__el--logout Log out
+            a.btn.btn-dark.nav__el--logout Log out
 
     else
         ul
@@ -24,19 +24,3 @@ nav.navbar.bg-dark
             a(href='/signup') Sign up
             li
             a(href='/login') Login
-
-                //- nav.navbar
-    //-     ul
-    //-         +navItem('#', 'Settings', 'settings', true)
-    //-         +navItem('#', 'My bookings', 'briefcase')
-    //-         +navItem('#', 'My reviews', 'star')
-    //-         +navItem('#', 'Billing', 'credit-card')
-
-    //-     - if (user.role === 'admin')
-    //-         .navbar
-    //-             h5 Admin
-    //-             ul
-    //-                 +navItem('#', 'Manage tours', 'map')
-    //-                 +navItem('#', 'Manage users', 'users')
-    //-                 +navItem('#', 'Manage reviews', 'star')
-    //-                 +navItem('#', 'Manage bookings', 'briefcase')
