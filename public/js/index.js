@@ -8,10 +8,9 @@ import { buykiosk } from './buykiosk';
 import { getads, getMyKiosks } from './getads';
 import { getMyAds } from './getmyads';
 import { getResetmail, resetpassword } from './reset-pass';
-import {buyad} from './buyad';
-import {uploadads} from './uploadads';
-import {bookAd} from './stripe';
-
+import { buyad } from './buyad';
+import { uploadads } from './uploadads';
+import { bookAd } from './stripe';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -28,7 +27,7 @@ const getAdsBtn = document.querySelector('.el--getads');
 const getMyKiosksBtn = document.querySelector('.el--getMyKiosks');
 const getMyAdsBtn = document.querySelector('.el--getMyAds');
 const uploadadsForm = document.querySelector('.form--uploadads');
-const bookbtn = document.getElementById('.form--payment');
+const bookbtn = document.querySelector('.form--payment');
 
 // DELEGATION
 
@@ -196,7 +195,7 @@ if (getMyAdsBtn)
     getMyAds();
   });
 
-  if (uploadadsForm)
+if (uploadadsForm)
   uploadadsForm.addEventListener('submit', e => {
     e.preventDefault();
     const adsid = document.getElementById('adsid').value;
@@ -207,12 +206,10 @@ if (getMyAdsBtn)
     uploadads(adsid, form, 'data');
   });
 
-  if (bookbtn)
+if (bookbtn)
   bookbtn.addEventListener('submit', e => {
     e.preventDefault();
     const adId = document.getElementById('adId').value;
     console.log(adId);
-    bookAd(
-      adId
-    );
+    bookAd(adId);
   });
