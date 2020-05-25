@@ -33,7 +33,7 @@ const kioskSchema = new mongoose.Schema(
     },
     active: {
       type: Boolean,
-      default: false
+      default: true
     },
     operatingHours: {
       type: String,
@@ -64,6 +64,10 @@ const kioskSchema = new mongoose.Schema(
     estReach: {
       type: Number,
       default: 200
+    },
+    earnings: {
+      type: Number,
+      default: 0
     }
   },
   {
@@ -85,6 +89,12 @@ kioskSchema.virtual('ads', {
 // DOCUMENT MIDDLEWARE: runs before .save() and .create()
 kioskSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+kioskSchema.pre(/^find/, function(next) {
+  // this points to the current query
+  this.find({ active: { $ne: false } });
   next();
 });
 

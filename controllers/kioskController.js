@@ -7,7 +7,19 @@ exports.getAllKiosks = factory.getAll(Kiosk);
 exports.getKiosk = factory.getOne(Kiosk, { path: 'ads' });
 exports.createKiosk = factory.createOne(Kiosk);
 exports.updateKiosk = factory.updateOne(Kiosk);
-exports.deleteKiosk = factory.deleteOne(Kiosk);
+
+exports.deleteKiosk = catchAsync(async (req, res, next) => {
+  const doc = await Kiosk.findByIdAndUpdate(req.params.id, { active: false });
+
+  if (!doc) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+
+  res.status(204).json({
+    status: 'success',
+    data: null
+  });
+});
 
 // /kiosks-within/:distance/center/:latlng
 // /kiosks-within/233/center/34.111745,-118.113491

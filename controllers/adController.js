@@ -117,4 +117,16 @@ exports.getAllAds = factory.getAll(Ad);
 exports.getAd = factory.getOne(Ad);
 exports.createAd = factory.createOne(Ad);
 exports.updateAd = factory.updateOne(Ad);
-exports.deleteAd = factory.deleteOne(Ad);
+
+exports.deleteAd = catchAsync(async (req, res, next) => {
+  const doc = await Ad.findByIdAndUpdate(req.params.id, { active: false });
+
+  if (!doc) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+
+  res.status(204).json({
+    status: 'success',
+    data: null
+  });
+});
