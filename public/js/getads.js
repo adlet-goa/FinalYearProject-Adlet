@@ -56,7 +56,7 @@ export async function getMyKiosks() {
       } else {
         showAlert('success', 'No Data');
       }
-    }
+    } 
   } catch (error) {
     console.error(error);
   }

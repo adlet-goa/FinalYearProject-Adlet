@@ -2,13 +2,15 @@ extends base
 
 block content
     section.container
+        h1.large.text-primary Your Dashboard
         h2.my-2 Advertising campaigns running !
-        form.form.el--getMyAds
+        form.form
             .form-group
-            input.btn.btn-primary.el--getMyKiosks( type= 'button' value='Get my Ads')
+            input.btn.btn-primary.el--getMyAds( type= 'button' value='Get my Ads')
             .form-group
             table.table
                 thead#showHead
                 tbody#showData
-        
-        a.btn.btn-light.dash-buttons(href='#') Buy advertising space                    
+        .my-2
+            a.btn.btn-dark.dash-buttons(href='#') ^ 
+                  

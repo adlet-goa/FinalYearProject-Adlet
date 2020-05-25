@@ -101,3 +101,11 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
     user: updatedUser
   });
 });
+
+exports.getPayment= catchAsync(async (req, res, next) => {
+  const ads = await Ad.find();
+  res.status(200).render('payment', {
+    title: 'View Payment Page',
+    ads
+  });
+});
