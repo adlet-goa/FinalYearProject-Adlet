@@ -16,7 +16,7 @@ export const buyad = async (
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:8000/api/v1/ads',
+      url: '/api/v1/ads',
       data: {
         title,
         mimeType,
