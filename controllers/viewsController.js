@@ -2,7 +2,7 @@ const User = require('../models/userModel');
 const Kiosk = require('../models/kioskModel');
 const Ad = require('../models/adModel');
 const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/appError');
+//const AppError = require('../utils/appError');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   const kiosks = await Kiosk.find();
@@ -102,7 +102,7 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getPayment= catchAsync(async (req, res, next) => {
+exports.getPayment = catchAsync(async (req, res, next) => {
   const ads = await Ad.find();
   res.status(200).render('payment', {
     title: 'View Payment Page',

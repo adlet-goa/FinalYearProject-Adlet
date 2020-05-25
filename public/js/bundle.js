@@ -8538,7 +8538,7 @@ var getads = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            apiurl = "http://127.0.0.1:8000/api/v1/kiosks/".concat(kioskid, "/ads");
+            apiurl = "http://127.0.0.1:8000/api/v1/kiosks/".concat(kioskid);
             _context.next = 4;
             return _axios.default.get(apiurl);
 
@@ -8547,7 +8547,7 @@ var getads = /*#__PURE__*/function () {
 
             if (response.data.status === 'success') {
               (0, _alerts.showAlert)('success', 'Ads fetched successfully!');
-              getmyads = response.data.data.data;
+              getmyads = response.data.data.data.ads;
 
               if (getmyads.length > 0) {
                 temph = '';
@@ -8555,15 +8555,18 @@ var getads = /*#__PURE__*/function () {
                 temph += '<tr>';
                 temph += '<th>Title';
                 temph += '<th>Category';
-                temph += '<th>Created On';
+                temph += '<th>Duration Start';
+                temph += '<th>Duration End';
                 document.getElementById('showHead').innerHTML = temph;
                 getmyads.forEach(function (element) {
                   tempb += '<tr>';
                   tempb += '<td>' + element.title;
                   tempb += '<td>' + element.category;
-                  tempb += '<td>' + element.createdAt;
+                  tempb += '<td>' + element.duration[0].split('T')[0];
+                  tempb += '<td>' + element.duration[1].split('T')[0];
                 });
                 document.getElementById('showData').innerHTML = tempb;
+                console.log(element.duration);
               } else {
                 (0, _alerts.showAlert)('success', 'No Data');
               }
@@ -8619,13 +8622,25 @@ function _getMyKiosks() {
                 temph = '';
                 tempb = '';
                 temph += '<tr>';
-                temph += '<th>Title';
-                temph += '<th>Used Slots';
+                temph += '<th>Name';
+                temph += '<th>Address';
+                temph += '<th>Op Hours';
+                temph += '<th>Op Days';
+                temph += '<th>Subscription';
+                temph += '<th>Est Reach';
+                temph += '<th>Total Earnings';
+                temph += '<th>#Ads Running';
                 document.getElementById('showHeadK').innerHTML = temph;
                 mykiosks.forEach(function (element) {
                   tempb += '<tr>';
                   tempb += '<td>' + element.name;
-                  tempb += '<td>' + element.usedSlot;
+                  tempb += '<td>' + element.location.address;
+                  tempb += '<td>' + element.operatingHours;
+                  tempb += '<td>' + element.operatingDays;
+                  tempb += '<td>' + element.subscription;
+                  tempb += '<td>' + element.estReach;
+                  tempb += '<td>' + element.earnings;
+                  tempb += '<td>' + element.ads.length;
                 });
                 document.getElementById('showDataK').innerHTML = tempb;
               } else {
@@ -8696,12 +8711,22 @@ function _getMyAds() {
                 tempb = '';
                 temph += '<tr>';
                 temph += '<th>Title';
-                temph += '<th>Created On';
+                temph += '<th>Category';
+                temph += '<th>Est Reach';
+                temph += '<th>Duration Start';
+                temph += '<th>Duration End';
+                temph += '<th>Price';
+                temph += '<th>No. of Kiosks Running this Ad';
                 document.getElementById('showHead').innerHTML = temph;
                 myads.forEach(function (element) {
                   tempb += '<tr>';
                   tempb += '<td>' + element.title;
-                  tempb += '<td>' + element.createdAt;
+                  tempb += '<td>' + element.category;
+                  tempb += '<td>' + element.estReach;
+                  tempb += '<td>' + element.duration[0].split('T')[0];
+                  tempb += '<td>' + element.duration[1].split('T')[0];
+                  tempb += '<td>' + element.price;
+                  tempb += '<td>' + element.kiosks.length;
                 });
                 document.getElementById('showData').innerHTML = tempb;
               } else {
@@ -9553,7 +9578,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56070" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64040" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

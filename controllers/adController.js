@@ -102,13 +102,20 @@ exports.setPriceReach = catchAsync(async (req, res, next) => {
 
   let p = 0;
   let eR = 0;
+  let c = 1;
   adKiosks.forEach(function(el) {
     p += el.subscription;
     eR += el.estReach;
+    c += 1;
   });
 
   req.body.estReach = eR * days;
   req.body.price = p * days;
+
+  await Kiosk.updateMany(
+    { _id: { $in: kiosksObjIds } },
+    { $inc: { earnings: ((p * days) / c) * 0.6 } }
+  );
 
   next();
 });

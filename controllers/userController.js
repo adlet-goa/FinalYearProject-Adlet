@@ -68,7 +68,9 @@ exports.getMyAds = catchAsync(async (req, res, next) => {
 });
 
 exports.getMyKiosks = catchAsync(async (req, res, next) => {
-  const kiosks = await Kiosk.find({ owner: req.user.id });
+  const kiosks = await Kiosk.find({ owner: req.user.id }).populate({
+    path: 'ads'
+  });
 
   res.status(200).json({
     status: 'success',

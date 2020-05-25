@@ -14,12 +14,22 @@ export async function getMyAds() {
         var tempb = '';
         temph += '<tr>';
         temph += '<th>Title';
-        temph += '<th>Created On';
+        temph += '<th>Category';
+        temph += '<th>Est Reach';
+        temph += '<th>Duration Start';
+        temph += '<th>Duration End';
+        temph += '<th>Price';
+        temph += '<th>No. of Kiosks Running this Ad';
         document.getElementById('showHead').innerHTML = temph;
         myads.forEach(element => {
           tempb += '<tr>';
           tempb += '<td>' + element.title;
-          tempb += '<td>' + element.createdAt;
+          tempb += '<td>' + element.category;
+          tempb += '<td>' + element.estReach;
+          tempb += '<td>' + element.duration[0].split('T')[0];
+          tempb += '<td>' + element.duration[1].split('T')[0];
+          tempb += '<td>' + element.price;
+          tempb += '<td>' + element.kiosks.length;
         });
         document.getElementById('showData').innerHTML = tempb;
       } else {
