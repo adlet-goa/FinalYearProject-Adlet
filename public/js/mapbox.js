@@ -11,6 +11,11 @@ export const displayMap = locations => {
   const bounds = new mapboxgl.LngLatBounds();
 
   locations.forEach(loc => {
+    // Add popup
+    const popup = new mapboxgl.Popup({
+      offset: 30
+    }).setHTML(`<p>location: ${loc.address} <br/> ${loc.description}</p>`);
+
     // Create marker
     const el = document.createElement('div');
     el.className = 'marker';
@@ -21,19 +26,19 @@ export const displayMap = locations => {
       anchor: 'bottom'
     })
       .setLngLat(loc.coordinates)
-      .addTo(map);
-
-    // Add popup
-    new mapboxgl.Popup({
-      offset: 30
-    })
-      .setLngLat(loc.coordinates)
-      .setHTML(`<p>location: ${loc.address} <br/> ${loc.description}</p>`)
+      .setPopup(popup)
       .addTo(map);
 
     // Extend map bounds to include current location
     bounds.extend(loc.coordinates);
   });
 
-  map.fitBounds(bounds);
+  map.fitBounds(bounds, {
+    padding: {
+      top: 100,
+      bottom: 100,
+      left: 100,
+      right: 100
+    }
+  });
 };
