@@ -155,7 +155,6 @@ if (buyadsForm)
   buyadsForm.addEventListener('submit', e => {
     e.preventDefault();
     const title = document.getElementById('title').value;
-    const mimeType = document.getElementById('mimeType').value;
     const category = document.getElementById('category').value;
     const dateStart = document.getElementById('dateStart').value;
     const dateEnd = document.getElementById('dateEnd').value;
@@ -172,7 +171,6 @@ if (buyadsForm)
     const kiosks = temp;
     buyad(
       title,
-      mimeType,
       category,
       dateStart,
       dateEnd,

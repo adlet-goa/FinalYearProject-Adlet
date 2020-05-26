@@ -41,7 +41,7 @@ export async function getMyKiosks() {
     const apiurl = ' /api/v1/users/getMyKiosks';
     const response = await axios.get(apiurl);
     if (response.data.status === 'success') {
-      showAlert('success', 'Ads fetched successfully!');
+      showAlert('success', 'Kiosks fetched successfully!');
       const mykiosks = response.data.data.kiosks;
       if (mykiosks.length > 0) {
         var temph = '';

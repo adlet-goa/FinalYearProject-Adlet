@@ -4,7 +4,6 @@ import { showAlert } from './alerts';
 
 export const buyad = async (
   title,
-  mimeType,
   category,
   dateStart,
   dateEnd,
@@ -19,7 +18,6 @@ export const buyad = async (
       url: '/api/v1/ads',
       data: {
         title,
-        mimeType,
         category,
         duration: [dateStart, dateEnd],
         displayHours,

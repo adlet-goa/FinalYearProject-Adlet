@@ -294,6 +294,9 @@ button {
   color: #0077b5;
 }
 
+.scrollcss {
+  overflow-x: scroll;
+}
 .table th,
 .table td {
   padding: 1rem;
