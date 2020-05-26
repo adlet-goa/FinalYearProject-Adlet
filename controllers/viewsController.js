@@ -6,9 +6,15 @@ const catchAsync = require('../utils/catchAsync');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   const kiosks = await Kiosk.find();
+  const kiosksArray = [];
+
+  kiosks.forEach(function(el) {
+    kiosksArray.push(el.location);
+  });
+
   res.status(200).render('overview', {
     title: 'Landing Page',
-    kiosks
+    kiosksArray
   });
 });
 
@@ -36,11 +42,19 @@ exports.getResetPasswordForm = (req, res) => {
   });
 };
 
-exports.getAccount = (req, res) => {
-  res.status(200).render('account', {
-    title: 'Your account'
+exports.getAccount = catchAsync(async (req, res, next) => {
+  const kiosks = await Kiosk.find();
+  const kiosksArray = [];
+
+  kiosks.forEach(function(el) {
+    kiosksArray.push(el.location);
   });
-};
+
+  res.status(200).render('account', {
+    title: 'Your Account',
+    kiosksArray
+  });
+});
 
 exports.getAccountSettings = catchAsync(async (req, res, next) => {
   res.status(200).render('settings', {

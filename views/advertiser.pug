@@ -38,7 +38,7 @@ block content
             each kiosk in kiosks
                 input#kiosk(type='checkbox' name='kiosk' value=kiosk.id)
                 label
-                    small.from-text(for=kiosk.id)= " " + kiosk.location.address
+                    small.from-text(for=kiosk.id)= " " + kiosk.name + " (" + kiosk.location.address + ") | Subscription: ₹" + kiosk.subscription + "/day | Reach: " + kiosk.estReach
                 br
             .form-group
             small.form-text
