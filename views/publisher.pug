@@ -49,9 +49,7 @@ block content
                 option(value='50') 50    
                 option(value='55') 55
             .form-group
-            small.form-text
-                | Owner Id
-            input#owner(type='password' placeholder='Owner' name='owner' value=user.id)
+            input#owner(hidden='' type='label' name='owner' visibility:'hidden' value=user.id)
             .form-group                
             input.btn.btn-primary(type='submit' value='Buy Kiosk')
             
