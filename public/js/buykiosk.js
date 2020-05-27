@@ -21,7 +21,7 @@ export const buykiosk = async (
         name,
         location: {
           address,
-          coordinates: [lat, lon],
+          coordinates: [lon, lon],
           description
         },
         operatingHours,
